@@ -25,11 +25,13 @@ It is a minimal back-end with python. With the flask framework, a simple RESTful
 ### Client Introduction:
 This is a single page app, using HTML5 and ccs3. Use the python server's RESTful api to query films, directors, actors, companies and other information, and use Google Maps to display query results.
 
-The client is available at: [client demo](http://www.huicap.com/sfmovie)
+The client is available at: [client demo](http://www.huicap.com/sfmovie/index.html)
 ### some plugins used by the client
 	JQuery
 	Bootstrap
 	Typehead
 ### screenshots
-Since my aliyun can not run python, here are some of my local runtime screenshots
-	
+Since my aliyun environment can not run python, here are some of my local runtime screenshots.
+Enter at least two letters, then select a result, click the search button, the map center will target the results and show more film details.
+![enter letters](http://www.huicap.com/sfmovie/search1.png)
+![click search](http://www.huicap.com/sfmovie/search2.png)
