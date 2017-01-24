@@ -2,8 +2,8 @@
 # 
 # Version: 1.0
 # Author: mfm@vip.qq.com
-# Date£º2017-01-23
-# Description£ºSFMovie Server for the Tradesift test
+# Date: 2017-01-23
+# Description: SFMovie Server for the Tradesift test
 # 
 from flask import request, jsonify
 from flask import make_response
