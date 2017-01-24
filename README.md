@@ -13,11 +13,23 @@ It is a minimal back-end with python. With the flask framework, a simple RESTful
 	virtualenv venv # Create a standalone virtualenv environment
 	. venv/bin/activate # Using virtualenv, note that there is a dot in front of and space
 #### 2.setup flask
-	(venv) [root@localhost flask-bb]#pip install flask   #安装Flask
-	(venv) [root@localhost flask-bb]#pip install flask-script    #安装Flask-Script 来代替原生启动管理
-
+	(venv) [root@localhost flask-bb]#pip install flask   #install Flask
+	(venv) [root@localhost flask-bb]#pip install flask-script    #instal Flask-Script
 #### 3.upload and run
 	chomd 777 manage.py
 	python manage.py runserver --host 0.0.0.0
+	
+### Server RESTful API
+
 
 ### Client Introduction:
+This is a single page app, using HTML5 and ccs3. Use the python server's RESTful api to query films, directors, actors, companies and other information, and use Google Maps to display query results.
+
+The client is available at: [client demo](http://www.huicap.com/sfmovie)
+### some plugins used by the client
+	JQuery
+	Bootstrap
+	Typehead
+### screenshots
+Since my aliyun can not run python, here are some of my local runtime screenshots
+	
