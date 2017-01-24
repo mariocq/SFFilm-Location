@@ -20,7 +20,7 @@ It is a lightweight backend server implemented by python. Based on the flask fra
 	python manage.py runserver --host 0.0.0.0
 	
 ### Server RESTful API
-With API, accessing the system fields is as simple as including them in POST parameter. 
+With API, accessing the system fields is as simple as including them in POST parameter. The "type" fields include "actor", "director", "writer", "company", and "film".
 #### For example:
 	server api:http://127.0.0.1:5000/sfmovie/query
 	client post data:
