@@ -1,0 +1,275 @@
+<!--
+    Version: 1.0
+    Author: mfm@vip.qq.com
+    Date：2017-01-23
+    Description：SFMovie Client for the Tradesift test
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>San Francisco Film Locations</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">       
+        
+        <!--For the traditional search engine-->
+        <meta name="description" content="Shows on a map where movies have been filmed in San Francisco." />
+        <meta name="keywords" content="movies,films,actors,actresses,directors,stars" />  
+        
+        <!--For the SNS search engine(Facebook, renren)-->
+        <meta property='og:title' content="San Francisco Film Locations" />
+        <meta property='og:site_name' content='San Francisco Film Locations' />
+        <meta property="og:description" content="Shows on a map where movies have been filmed in San Francisco." />
+        
+        <!--For mobile, sets the viewport width-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <!--Baidu public library of static resources-->
+        <!--In China, google service is not very convenient to visit, so some large companies launched their own mirror CDN service, such as Baidu, 360-->
+        <!--JQuery -->
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" charset="utf-8"></script>
+        
+        <!--Bootstrap-->
+        <script src="http://apps.bdimg.com/libs/bootstrap/3.1.1/js/bootstrap.min.js" charset="utf-8"></script>
+        <link href="http://apps.bdimg.com/libs/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+        
+        <!--Bootstrap Typeahead Plugin for autocompletion-->
+        <script src="js/bootstrap3-typeahead.min.js" charset="utf-8"></script>
+        
+        <!--Bootstrap Select Plugin---->
+        <script src="js/bootstrap-select.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/bootstrap-select.min.css">        
+        
+        <!--Slider Plugin---->
+        <script src="js/slippry.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/slippry.css">        
+            
+        <!--Scroll Reveal Plugin---->
+        <script src="js/scrollReveal.min.js" type="text/javascript"></script>
+        
+        <!--Webfonts, 360 mirror CDN service---->
+        <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>   
+        
+        <!-- Google Map API-->  
+        <script src="http://ditu.google.cn/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&signed=true&callback=initMap" async defer></script>
+        <script src="js/sfmap.js" type="text/javascript"></script>
+        
+        <!--Custom icons, SVG format---->
+        <script src="js/iconfont.js"></script>
+            
+        <!--Custom styles-->
+        <link href="css/sfcss.css" rel='stylesheet' type='text/css' />        
+        
+        <!--Custom Javascript-->
+        <script src="js/sfmain.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!----start-top---->
+        <div id="move-top"><!----This is an anchor that returns to the top---->
+            <!----start-header---->
+            <div class="header animated bounceInDown">           
+                <!----start menu---->
+                <div class="wrap">
+                    <div class="logo">
+                        <h3>San Francisco <label>Film Locations</label></h3>
+                    </div>
+                    <!----start-top-nav---->
+                    <div data-scroll-reveal="enter from the top over 0.7s" class="top-nav">
+                        <ul>
+                            <li class="active"><a href="#home">Home<span> </span></a></li>
+                            <li><a href="#search">Search</a></li>
+                            <li><a href="#film">Popular</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"> </div>
+                    <!----//End-top-nav---->
+                </div>
+                <!----//End menu---->                
+            </div>
+            <!----//End-header---->
+            
+            
+            <!----start-image-slider---->
+            <div data-scroll-reveal="enter bottom but wait 0.7s" id="home">
+                <div class="wrap">
+                    <ul id="jquery-slide">
+                      <li>
+                        <a href="#slide1">
+                        </a>
+                        <div data-scroll-reveal="enter bottom but wait 0.7s" class="slider-detils">
+                            <h3>San Francisco <label>Film Locations</label></h3>
+                            <span>This is a service that shows on a map where movies have been filmed in San Francisco. You should be able to filter the view using<i> autocompletion search.</i></span>
+                            <a class="slide-btn" href="#search">Try it!</a>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#slide2">
+                        </a>
+                          <div data-scroll-reveal="enter bottom but wait 1s" class="slider-detils">
+                            <h3>In the film scene to <label>Leave Memories</label></h3>
+                            <span>If you are traveling in San Francisco, maybe go to the movie scene, is also a good choice. We would be happy to provide you with this service.</span>
+                            <a class="slide-btn" href="#search">Try it!</a>
+                        </div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <!----//End-image-slider---->
+            <div class="clear"> </div>
+        </div>
+        <!----//End-top---->
+        
+        
+        <!----start-search---->
+        <div data-scroll-reveal="enter bottom but wait 0.7s" class="search" id="search">
+            <div data-scroll-reveal="enter bottom but wait 1.3s" class="search-form">
+                <form id="userForm" class="form-horizontal" onsubmit="return FindLocation()">
+                <!-- silde a -->  
+                <div class="form-group">    
+                    <div class="col-xs-9">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <select id="searchOption" class="selectpicker show-menu-arrow form-control">
+                                    <option selected value="name">Film</option>
+                                    <option value="actor">Actor</option>
+                                    <option value="director">Director</option>
+                                    <option value="writer">Writer</option>
+                                    <option value="company">Company</option>
+                                </select>
+                            </div><!-- /btn-group -->
+                            <input class="form-control" type="text" name="key" id="key" data-provide="typeahead" autocomplete="off" />
+                        </div>
+                    </div>
+                                        
+                    <div class="col-xs-3">                  
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">Search</button>
+                    </div>       
+                </div>
+            </form>
+            </div>
+            <div data-scroll-reveal="enter bottom but wait 0.7s" class="search-map">
+                <div id="google-map" style="min-height:750px;width:100%;"></div>
+            </div>
+        </div>
+        <!----//End-search---->                
+        
+        
+        <!---start-top-grids---->
+        <div class="top-grids" id="film">
+            <div class="wrap">
+                <h3><span>Most</span> Popular</h3>
+                <i> </i>
+                <div data-scroll-reveal="enter bottom but wait 0.3s" class="top-grids-box row">
+                    <div data-scroll-reveal="enter top over 0.7s after 0.7s" class="top-grid col-xs-12 col-sm-3">
+                        <a class="icon1" href="#">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-dianying"></use>
+                            </svg>
+                        </a>
+                        <h4><a href="#">Most Popular Movies</a></h4>
+                        <p>This is a list of the most popular movies, the data obtained from imdb. See if you can find them on the map</p>
+                        <a class="top-btn" href="http://www.imdb.com/chart/moviemeter?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2671047782&pf_rd_r=0JSSWKPD8WVJPN80XFA4&pf_rd_s=right-4&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_ql_2" target="_blank">Read  More</a>
+                    </div>
+                    <div data-scroll-reveal="enter top over 0.7s after 0.7s" class="top-grid col-xs-12 col-sm-3">
+                        <a class="icon2" href="#">                            
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-dianshi"></use>
+                            </svg>
+                        </a>
+                        <h4><a href="#">Most Popular TV</a></h4>
+                        <p>This is a list of the most popular TV, the data obtained from imdb. See if you can find them on the map</p>
+                        <a class="top-btn" href="http://www.imdb.com/chart/tvmeter?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2671047782&pf_rd_r=18M6AGMNNPG1C5YD329Q&pf_rd_s=right-4&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_ql_5" target="_blank">Read  More</a>
+                    </div>
+                    <div data-scroll-reveal="enter top over 0.7s after 0.7s" class="top-grid col-xs-12 col-sm-3">
+                        <a class="icon3" href="#">                                                        
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-xingguang"></use>
+                            </svg>
+                        </a>
+                        <h4><a href="#">Top Rated Movies</a></h4>
+                        <p>This is a list of the Top Rated movies, the data obtained from imdb. See if you can find them on the map</p>
+                        <a class="top-btn" href="http://www.imdb.com/chart/top?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2671047782&pf_rd_r=1QQWEWR9EFP8G5HHHP45&pf_rd_s=right-4&pf_rd_t=15506&pf_rd_i=tvmeter&ref_=chttvm_ql_3" target="_blank">Read  More</a>
+                    </div>
+                    <div data-scroll-reveal="enter top over 0.7s after 0.7s" class="top-grid col-xs-12 col-sm-3">
+                        <a class="icon4" href="#">                                                                                    
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-xiaidu"></use>
+                            </svg>
+                        </a>
+                        <h4><a href="#">Top Rated TV</a></h4>
+                        <p>This is a list of the Top Rated TV, the data obtained from imdb. See if you can find them on the map</p>
+                        <a class="top-btn" href="http://www.imdb.com/chart/toptv?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2671047782&pf_rd_r=1QQWEWR9EFP8G5HHHP45&pf_rd_s=right-4&pf_rd_t=15506&pf_rd_i=tvmeter&ref_=chttvm_ql_6" target="_blank">Read  More</a>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+            </div>
+        </div>
+        <!---//End-top-grids---->
+        
+        
+        <!----start-contact---->
+        <div data-scroll-reveal="enter bottom but wait 0.3s" class="contact row" id="contact">
+            <div data-scroll-reveal="enter bottom but wait 1.3s" class="contact-form col-xs-12 col-sm-4 col-sm-offset-4">
+                <div class="contact-info">
+                    <h3><span>Contact Us</span> Now</h3>
+                    <p>Treasure Island, Building #1, Ave of the Palms, San Francisco</p>
+                    <label>0431 259 288</label>
+                    <a href="mailto:info@sfmovie.com">info@sfmovie.com</a>
+                    <i> </i>
+                </div>
+            </div>
+        </div>
+        <!----//End-contact---->
+        
+        
+        <!----start-footer---->
+        <div data-scroll-reveal="enter bottom but wait 0.7s" class="footer">
+            <div data-scroll-reveal="enter bottom but wait 0.7s" class="footer-top">
+                <div class="wrap">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#search">Search</a></li>
+                        <li><a href="#film">Popular</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="wrap">
+                    <p>Copyright © 2017 San Francisco Film Locations</p>
+                </div>
+            </div>
+        </div>
+        <!---//End-footer--->
+        
+        
+        <!----start-scrooling-script---->
+        <a href="#move-top" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+        <!----//End-scrooling-script---->
+        
+        
+        <!-- start window（Modal） -->
+        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="Infomation" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--window title-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Infomation</h4>
+                    </div>
+                    <!--final result-->
+                    <div class="modal-body">
+                        <span id="resultMsg"></span>
+                    </div>
+                    <!--close button-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMsgClose">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----//End-window（Modal）---->
+        
+    </body>
+</html>
