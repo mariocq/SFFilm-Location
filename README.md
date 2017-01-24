@@ -20,7 +20,13 @@ It is a lightweight backend server implemented by python. Based on the flask fra
 	python manage.py runserver --host 0.0.0.0
 	
 ### Server RESTful API
-
+With API, accessing the system fields is as simple as including them in POST parameter. 
+#### For example:
+	server api:http://127.0.0.1:5000/sfmovie/query
+	client post data:
+	{
+	   "type" : "actor" , "key" : "ab"
+	}
 
 ## Client Introduction:
 The client app provides an UI which is based on HTML5 and css3. It calls the python server's RESTful api to query films, directors, actors, companies and other information, and the queried results are displayed in Google Maps.
