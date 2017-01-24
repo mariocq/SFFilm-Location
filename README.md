@@ -3,7 +3,7 @@ San Francisco Film Locations
 This is a service that shows on a map where movies have been filmed in San Francisco, including the server and the client. 
 
 ## Server Introduction:  
-It is a minimal back-end with python. With the flask framework, a simple RESTful interface is implemented. The data source is the Json data that is read from the remote when the server is started. The main RESTful API is implemented in Server/app/main/view.py
+It is a minimal back-end with python. With the flask framework, a simple RESTful interface is implemented. The data source is the Json data that is read from the remote when the server is started. No database was used. The main RESTful API is implemented in Server/app/main/view.py
 
 ### Server install
 #### 1.setup environment
@@ -22,15 +22,19 @@ It is a minimal back-end with python. With the flask framework, a simple RESTful
 ### Server RESTful API
 
 
-### Client Introduction:
+## Client Introduction:
 This is a single page app, using HTML5 and ccs3. Use the python server's RESTful api to query films, directors, actors, companies and other information, and use Google Maps to display query results.
 
-The client is available at: [client demo](http://www.huicap.com/sfmovie/index.html)
-### some plugins used by the client
+The client is available at: [client demo host on Aliyun](http://www.huicap.com/sfmovie/index.html)
+### Plugins used by the client
 	JQuery
 	Bootstrap
-	Typehead
-### screenshots
+	Bootstrap-typeahead
+	Bootstrap-select
+	ScrollReveal
+	Slippry
+	
+### Screenshots
 Since my aliyun environment can not run python, here are some of my local runtime screenshots.
 Enter at least two letters, then select a result, click the search button, the map center will target the results and show more film details.
 ![enter letters](http://www.huicap.com/sfmovie/search1.png)
