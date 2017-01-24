@@ -35,7 +35,6 @@ The client is available at: [client demo host on Aliyun](http://www.huicap.com/s
 	Slippry
 	
 ### Screenshots
-Since my aliyun environment can not run python, here are some of my local runtime screenshots.
-Enter at least two letters, then select a result, click the search button, the map center will target the results and show more film details.
+Since my Aliyun environment doesn't support python, here are some runtime screenshots of my local environment. Enter at least two letters, potential target results will be listed out. Select a result, click on the search button, the map will highlight the location and show more film details. 
 ![enter letters](http://www.huicap.com/sfmovie/search1.png)
 ![click search](http://www.huicap.com/sfmovie/search2.png)
