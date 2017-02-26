@@ -47,3 +47,9 @@ The client is available at:
 Since my Aliyun environment doesn't support python, here are some runtime screenshots of my local environment. Enter at least two letters, potential target results will be listed out. Select a result, click on the search button, the map will highlight the location and show more film details. 
 ![enter letters](http://www.huicap.com/sfmovie/search1.png)
 ![click search](http://www.huicap.com/sfmovie/search2.png)
+
+	
+### Test
+Test RESTful API by karma and jasmide. Here are two screenshots from my local environment. It shows that API test has been passed.  
+![enter letters](http://www.huicap.com/sffilm/test1.png)
+![click search](http://www.huicap.com/sffilm/test2.png)
