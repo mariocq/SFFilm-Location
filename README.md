@@ -31,9 +31,9 @@ With API, accessing the system fields is as simple as including them in POST par
 ## Client Introduction:
 The client app provides an UI which is based on HTML5 and css3. It calls the python server's RESTful api to query films, directors, actors, companies and other information, and the queried results are displayed in Google Maps.
 
-The client is available at: 
-  version 1.0：[client host on Aliyun](http://www.huicap.com/sfmovie/index.html)
-  version 1.1：[client host on Aliyun(React, ES6, Webpack, logo animation, banner cloud)](http://www.huicap.com/sffilm/index.html)
+The client is available at:     
+  version 1.0：[client host on Aliyun](http://www.huicap.com/sfmovie/index.html)    
+  version 1.1：[client host on Aliyun(React, ES6, Webpack, logo animation, banner cloud)](http://www.huicap.com/sffilm/index.html)    
   
 ### Plugins used by the client
 	JQuery
