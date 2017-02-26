@@ -1,0 +1,103 @@
+<!--
+    Version: 1.1
+    Author: mfm@vip.qq.com
+    Date：<%= htmlWebpackPlugin.options.lastModify %>
+    Description：ReBuild with React, ES6, Webpack, add 3D Banner background, add animation logo, add Test code
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>San Francisco Film Locations</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+        <!--For the traditional search engine-->
+        <meta name="description" content="Shows on a map where movies have been filmed in San Francisco." />
+        <meta name="keywords" content="movies,films,actors,actresses,directors,stars" />
+
+        <!--For the SNS search engine(Facebook, renren)-->
+        <meta property='og:title' content="San Francisco Film Locations" />
+        <meta property='og:site_name' content='San Francisco Film Locations' />
+        <meta property="og:description" content="Shows on a map where movies have been filmed in San Francisco." />
+
+        <!--For mobile, sets the viewport width-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <!--Baidu public library of static resources-->
+        <!--In China, google service is not very convenient to visit, so some large companies launched their own mirror CDN service, such as Baidu, 360-->
+        <!--JQuery -->
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" charset="utf-8"></script>
+
+        <!--Bootstrap-->
+        <script src="http://apps.bdimg.com/libs/bootstrap/3.1.1/js/bootstrap.min.js" charset="utf-8"></script>
+        <link href="http://apps.bdimg.com/libs/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+
+        <!--Bootstrap Typeahead Plugin for autocompletion-->
+        <script src="js/bootstrap3-typeahead.min.js?ver=<%= htmlWebpackPlugin.options.date %>" charset="utf-8"></script>
+
+        <!--Bootstrap Select Plugin---->
+        <script src="js/bootstrap-select.min.js?ver=<%= htmlWebpackPlugin.options.date %>" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/bootstrap-select.min.css?ver=<%= htmlWebpackPlugin.options.date %>">
+
+        <!--Slider Plugin---->
+        <script src="js/slippry.min.js?ver=<%= htmlWebpackPlugin.options.date %>" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/slippry.css?ver=<%= htmlWebpackPlugin.options.date %>">
+
+        <!--Scroll Reveal Plugin---->
+        <script src="js/scrollReveal.min.js?ver=<%= htmlWebpackPlugin.options.date %>" type="text/javascript"></script>
+
+        <!--Segment Plugin for logo animation---->
+        <script src="js/segment.min.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+        <script src="js/d3-ease.v0.6.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+        <script src="js/letters.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+
+        <!--Webfonts, 360 mirror CDN service---->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+
+        <!--Custom icons, SVG format---->
+        <script src="js/iconfont.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+
+        <!--Custom styles-->
+        <link href="css/sfcss.css?ver=<%= htmlWebpackPlugin.options.date %>" rel='stylesheet' type='text/css' />
+
+        <!--3D Cloud Javascript-->
+        <script type="text/javascript" src="js/3d/ThreeWebGL.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+        <script type="text/javascript" src="js/3d/ThreeExtras.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+        <script type="text/javascript" src="js/3d/lanrenzhijia.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+        <script type="text/javascript" src="js/3d/RequestAnimationFrame.js?ver=<%= htmlWebpackPlugin.options.date %>"></script>
+
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <!----start-3D Cloud---->
+        <script id="vs" type="x-shader/x-vertex">
+        			varying vec2 vUv;
+        			void main() {
+        				vUv = uv;
+        				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        			}
+        </script>
+        <script id="fs" type="x-shader/x-fragment">
+        			uniform sampler2D map;
+        			uniform vec3 fogColor;
+        			uniform float fogNear;
+        			uniform float fogFar;
+        			varying vec2 vUv;
+        			void main() {
+        				float depth = gl_FragCoord.z / gl_FragCoord.w;
+        				float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+        				gl_FragColor = texture2D( map, vUv );
+        				gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+        				gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+        			}
+        </script>
+        <!----//End-Cloud-script---->
+
+        <!-- Google Map API-->
+        <script src="http://ditu.google.cn/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&signed=true&callback=initMap" async defer></script>
+        <script src="js/sf-map.js?ver=<%= htmlWebpackPlugin.options.date %>" type="text/javascript"></script>
+    </body>
+</html>

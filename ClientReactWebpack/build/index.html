@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>San Francisco Film Locations</title><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="description" content="Shows on a map where movies have been filmed in San Francisco."><meta name="keywords" content="movies,films,actors,actresses,directors,stars"><meta property="og:title" content="San Francisco Film Locations"><meta property="og:site_name" content="San Francisco Film Locations"><meta property="og:description" content="Shows on a map where movies have been filmed in San Francisco."><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" charset="utf-8"></script><script src="http://apps.bdimg.com/libs/bootstrap/3.1.1/js/bootstrap.min.js" charset="utf-8"></script><link href="http://apps.bdimg.com/libs/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet"><script src="js/bootstrap3-typeahead.min.js?ver=1488133493701" charset="utf-8"></script><script src="js/bootstrap-select.min.js?ver=1488133493701" type="text/javascript"></script><link rel="stylesheet" href="css/bootstrap-select.min.css?ver=1488133493701"><script src="js/slippry.min.js?ver=1488133493701" type="text/javascript"></script><link rel="stylesheet" href="css/slippry.css?ver=1488133493701"><script src="js/scrollReveal.min.js?ver=1488133493701" type="text/javascript"></script><script src="js/segment.min.js?ver=1488133493701"></script><script src="js/d3-ease.v0.6.js?ver=1488133493701"></script><script src="js/letters.js?ver=1488133493701"></script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css"><link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css"><script src="js/iconfont.js?ver=1488133493701"></script><link href="css/sfcss.css?ver=1488133493701" rel="stylesheet" type="text/css"><script type="text/javascript" src="js/3d/ThreeWebGL.js?ver=1488133493701"></script><script type="text/javascript" src="js/3d/ThreeExtras.js?ver=1488133493701"></script><script type="text/javascript" src="js/3d/lanrenzhijia.js?ver=1488133493701"></script><script type="text/javascript" src="js/3d/RequestAnimationFrame.js?ver=1488133493701"></script></head><body><div id="app"></div><script id="vs" type="x-shader/x-vertex">varying vec2 vUv;
+        			void main() {
+        				vUv = uv;
+        				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        			}</script><script id="fs" type="x-shader/x-fragment">uniform sampler2D map;
+        			uniform vec3 fogColor;
+        			uniform float fogNear;
+        			uniform float fogFar;
+        			varying vec2 vUv;
+        			void main() {
+        				float depth = gl_FragCoord.z / gl_FragCoord.w;
+        				float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+        				gl_FragColor = texture2D( map, vUv );
+        				gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+        				gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+        			}</script><script src="http://ditu.google.cn/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&signed=true&callback=initMap" async defer="defer"></script><script src="js/sf-map.js?ver=1488133493701" type="text/javascript"></script><script type="text/javascript" src="js/main.js"></script></body></html>
