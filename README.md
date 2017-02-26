@@ -51,5 +51,6 @@ Since my Aliyun environment doesn't support python, here are some runtime screen
 	
 ### Test
 Test RESTful API by karma and jasmide. Here are two screenshots from my local environment. It shows that API test has been passed.  
-![enter letters](http://www.huicap.com/sffilm/test1.png)
-![click search](http://www.huicap.com/sffilm/test2.png)
+   
+![enter](http://www.huicap.com/sffilm/test1.png)
+![click](http://www.huicap.com/sffilm/test2.png)
