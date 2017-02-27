@@ -22,11 +22,36 @@ It is a lightweight backend server implemented by python. Based on the flask fra
 ### Server RESTful API
 With API, accessing the system fields is as simple as including them in POST parameter. The "type" fields include "actor", "director", "writer", "company", and "film".
 #### For example:
-	server api:http://127.0.0.1:5000/sfmovie/query
-	client post data:
-	{
-	   "type" : "actor" , "key" : "ab"
+```javascript
+// Python RESTful API URL
+var Config = {
+    API_URL : "http://192.168.199.141:5000/sfmovie/query"
+}
+// request
+$.post(
+	Config.API_URL,
+	{"type" : $('#searchOption').val() , "key" : query},
+	function (e) {
+	    if (e.movies) {
+		// Get a list of movies from the server
+		if (e.movies.length == 0) {
+		    process([]);
+		    return;
+		}
+
+		// If it is not empty, the typehead plugin is initialized
+		var array = [];
+		$.each(e.movies, function (index, ele) {
+		    // store movies data
+		    name2Id[ele.id] = ele;
+		    array.push(ele.id + '');
+
+		});
+		process(array);
+	    }
 	}
+);
+```
 
 ## Client Introduction:
 The client app provides an UI which is based on HTML5 and css3. It calls the python server's RESTful api to query films, directors, actors, companies and other information, and the queried results are displayed in Google Maps.
@@ -35,9 +60,9 @@ The client app provides an UI which is based on HTML5 and css3. It calls the pyt
 #### V1.1
 * Rebuild client project using React, ES6, Webpack   
 * Use the component to reconstruct the code   
-* Added the logo text animation   
-* Added the banner cloud effect   
-* Added a RESTful unit test   
+* Added a animation for logo
+* Added a background cloud effect for banner
+* Added a RESTful API unit test by karma   
 
 The client is available at:     
   version 1.1：[client host on Aliyun(React, ES6, Webpack, logo animation, banner cloud)](http://www.huicap.com/sffilm/index.html)    
