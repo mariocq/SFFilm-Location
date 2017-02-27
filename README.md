@@ -31,9 +31,17 @@ With API, accessing the system fields is as simple as including them in POST par
 ## Client Introduction:
 The client app provides an UI which is based on HTML5 and css3. It calls the python server's RESTful api to query films, directors, actors, companies and other information, and the queried results are displayed in Google Maps.
 
+### Changelog
+#### V1.1
+* Rebuild client project using React, ES6, Webpack   
+* Use the component to reconstruct the code   
+* Added the logo text animation   
+* Added the banner cloud effect   
+* Added a RESTful unit test   
+
 The client is available at:     
-  version 1.0：[client host on Aliyun](http://www.huicap.com/sfmovie/index.html)    
   version 1.1：[client host on Aliyun(React, ES6, Webpack, logo animation, banner cloud)](http://www.huicap.com/sffilm/index.html)    
+  version 1.0：[client host on Aliyun](http://www.huicap.com/sfmovie/index.html)    
   
 ### Plugins used by the client
 	JQuery
@@ -42,6 +50,8 @@ The client is available at:
 	Bootstrap-select
 	ScrollReveal
 	Slippry
+	Three.js
+	d3-easy.js
 	
 ### Screenshots
 Since my Aliyun environment doesn't support python, here are some runtime screenshots of my local environment. Enter at least two letters, potential target results will be listed out. Select a result, click on the search button, the map will highlight the location and show more film details. 
